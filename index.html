@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Population Visualisations</title>
+    <!-- Include Vega and Vega-Lite -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+  </head>
+  <body>
+    <h1>Population Visualisations</h1>
+
+    <h2>Choropleth Map: 0-14 Population</h2>
+    <div id="choropleth"></div>
+
+    <h2>NSW Population Time Series</h2>
+    <div id="time-series"></div>
+
+    <script type="text/javascript">
+      // Embed the 0-14 population choropleth visualization
+      vegaEmbed("#choropleth", "0-14_pop_choropleth.json");
+
+      // Embed the NSW time series visualization
+      vegaEmbed("#time-series", "nsw_time_series.json");
+    </script>
+  </body>
+</html>

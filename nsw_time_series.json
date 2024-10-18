@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "data/time_series_data.csv"
+  },
+  "transform": [
+    {
+      "filter": "datum.StateName === 'New South Wales' && (datum.LGA_Name === 'Sydney' || datum.LGA_Name === 'Other LGA')"
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": {
+      "filled": true,
+      "tooltip": true
+    }
+  },
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "axis": {
+        "title": "Year",
+        "titleFont": "Roboto",
+        "titleFontSize": 15,
+        "labelFont": "Roboto",
+        "labelFontSize": 13
+      }
+    },
+    "y": {
+      "field": "Percent_Change",
+      "type": "quantitative",
+      "axis": {
+        "title": "Percentage Change (%)",
+        "titleFont": "Roboto",
+        "titleFontSize": 15,
+        "labelFont": "Roboto",
+        "labelFontSize": 13
+      }
+    },
+    "color": {
+      "field": "LGA_Name",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Sydney", "Other LGA"],
+        "range": ["#276419", "#7fbc41"]
+      },
+      "legend": {
+        "title": "Region",
+        "titleFont": "Roboto",
+        "titleFontSize": 15,
+        "labelFont": "Roboto",
+        "labelFontSize": 13
+      }
+    },
+    "tooltip": [
+      { "field": "Year", "type": "temporal", "title": "Year" },
+      {
+        "field": "Percent_Change",
+        "type": "quantitative",
+        "title": "Percentage Change",
+        "format": ".2f"
+      },
+      { "field": "LGA_Name", "type": "nominal", "title": "Region" }
+    ]
+  },
+  "width": 500,
+  "height": 300
+}
